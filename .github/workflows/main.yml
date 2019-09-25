@@ -1,0 +1,14 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@master
+    - name: Run a multi-line script
+      run: |
+        docker-compose run app sh -c "python manage.py test && flake8"
